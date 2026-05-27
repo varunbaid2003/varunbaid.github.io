@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --bg: #f8f7f4;
     --surface: #ffffff;
@@ -20,13 +19,15 @@
     --green-icon-bg: #edf5f0;
     --green-icon-color: #276843;
     --green-icon-border: #c8e2d4;
+    --blue-icon-bg: #eef2fb;
+    --blue-icon-color: #2a4a8a;
+    --blue-icon-border: #c4d2ef;
     --tag-bg: #edeae4;
     --tag-color: #6b6560;
     --hover-bg: #f2efe9;
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
   }
-
   body {
     font-family: 'Inter', sans-serif;
     background: var(--bg);
@@ -35,7 +36,6 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -61,9 +61,7 @@
   }
   .nav-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
   .nav-btn.primary:hover { background: #3a5e50; border-color: #3a5e50; }
-
   .page { max-width: 680px; margin: 0 auto; padding: 6rem 2rem 5rem; }
-
   .hero {
     padding: 2.75rem 0 2.5rem;
     border-bottom: 1px solid var(--border);
@@ -97,20 +95,17 @@
     font-size: 0.83rem; color: var(--text-muted);
     font-weight: 400; line-height: 1.65; max-width: 420px;
   }
-
   .section-header { display: flex; align-items: center; margin-bottom: 1rem; }
   .section-title {
     font-size: 0.62rem; font-weight: 600;
     letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
   }
-
   .projects-list {
     display: flex; flex-direction: column;
     border: 1px solid var(--border); border-radius: 14px;
     overflow: hidden; background: var(--surface);
     box-shadow: var(--shadow-sm); margin-bottom: 2.5rem;
   }
-
   .project-card {
     display: flex; align-items: center;
     padding: 1rem 1.1rem; gap: 1rem;
@@ -121,7 +116,6 @@
   .project-card:last-child { border-bottom: none; }
   .project-card:hover { background: var(--hover-bg); }
   .project-card:hover .card-arrow { background: var(--accent); color: #fff; border-color: var(--accent); }
-
   .card-icon {
     width: 40px; height: 40px; border-radius: 10px;
     flex-shrink: 0; display: flex; align-items: center; justify-content: center;
@@ -131,7 +125,12 @@
     color: var(--green-icon-color);
     border: 1px solid var(--green-icon-border);
   }
-
+  .card-icon.blue {
+    background: var(--blue-icon-bg);
+    color: var(--blue-icon-color);
+    border-color: var(--blue-icon-border);
+    font-size: 1rem;
+  }
   .card-body { flex: 1; min-width: 0; }
   .card-title {
     font-size: 0.875rem; font-weight: 500; color: var(--text);
@@ -154,15 +153,65 @@
     background: var(--green-icon-bg); color: var(--green-icon-color);
     border-color: var(--green-icon-border);
   }
+  .meta-tag.blue {
+    background: var(--blue-icon-bg); color: var(--blue-icon-color);
+    border-color: var(--blue-icon-border);
+  }
+  .meta-tag.live {
+    background: #f0faf4; color: #1a6e3c;
+    border-color: #b6dfc8;
+    display: inline-flex; align-items: center; gap: 0.25rem;
+  }
+  .meta-tag.live::before {
+    content: '';
+    display: inline-block; width: 5px; height: 5px;
+    border-radius: 50%; background: #1a6e3c;
+  }
   .meta-date { font-size: 0.7rem; color: var(--text-muted); }
   .meta-date::before { content: '·'; color: var(--border); margin-right: 0.3rem; }
-
   .card-arrow {
     width: 26px; height: 26px; border-radius: 50%;
     background: var(--tag-bg); border: 1px solid var(--border-light);
     display: flex; align-items: center; justify-content: center;
     color: var(--text-muted); font-size: 0.9rem; flex-shrink: 0;
     transition: all 0.14s ease;
+  }
+
+  /* Tool card highlight strip */
+  .tool-card-wrap {
+    border: 1px solid var(--border); border-radius: 14px;
+    overflow: hidden; background: var(--surface);
+    box-shadow: var(--shadow-sm); margin-bottom: 2.5rem;
+  }
+  .tool-card-inner {
+    display: flex; align-items: flex-start;
+    padding: 1.1rem 1.1rem 1rem; gap: 1rem;
+    text-decoration: none; color: inherit;
+    transition: background 0.14s ease;
+  }
+  .tool-card-inner:hover { background: var(--hover-bg); }
+  .tool-card-inner:hover .card-arrow { background: #2a4a8a; color: #fff; border-color: #2a4a8a; }
+  .tool-card-body { flex: 1; min-width: 0; }
+  .tool-card-title {
+    font-size: 0.875rem; font-weight: 500; color: var(--text);
+    margin-bottom: 0.22rem;
+  }
+  .tool-card-desc {
+    font-size: 0.76rem; color: var(--text-secondary);
+    line-height: 1.65; margin-bottom: 0.55rem;
+  }
+  .tool-problem {
+    font-size: 0.72rem; color: var(--text-muted);
+    font-style: italic; margin-bottom: 0.5rem; line-height: 1.6;
+  }
+  .tool-features {
+    display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.4rem;
+  }
+  .tool-feature {
+    font-size: 0.67rem; font-weight: 500;
+    padding: 0.15rem 0.55rem; border-radius: 100px;
+    background: var(--blue-icon-bg); color: var(--blue-icon-color);
+    border: 1px solid var(--blue-icon-border); letter-spacing: 0.01em;
   }
 
   .about-card {
@@ -172,13 +221,11 @@
   }
   .about-card p { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.75; }
   .about-card p + p { margin-top: 0.75rem; }
-
   footer { margin-top: 1.5rem; padding-top: 1.75rem; border-top: 1px solid var(--border); }
   .footer-left {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.95rem; color: var(--text-muted); letter-spacing: 0.01em;
   }
-
   @media (max-width: 600px) {
     nav { padding: 0 1.25rem; }
     .page { padding: 5rem 1.25rem 3.5rem; }
@@ -188,16 +235,13 @@
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-logo">Varun Baid</div>
   <div class="nav-right">
     <a href="https://www.linkedin.com/in/varun-baid-bb4a48214/" class="nav-btn primary" target="_blank">LinkedIn ↗</a>
   </div>
 </nav>
-
 <div class="page">
-
   <div class="hero">
     <div class="avatar"><img src="photo.jpg" alt="Varun Baid"></div>
     <div class="hero-text">
@@ -212,12 +256,11 @@
     </div>
   </div>
 
+  <!-- FINANCIAL MODELS -->
   <div class="section-header">
     <span class="section-title">Financial Models</span>
   </div>
-
   <div class="projects-list">
-
     <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/varunbaid2003/varunbaid.github.io/main/JNJ_DCF_Model.xlsx" class="project-card" target="_blank">
       <div class="card-icon">XLSX</div>
       <div class="card-body">
@@ -231,7 +274,6 @@
       </div>
       <div class="card-arrow">›</div>
     </a>
-
     <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/varunbaid2003/varunbaid.github.io/main/HCA_LBO_Model.xlsx" class="project-card" target="_blank">
       <div class="card-icon">XLSX</div>
       <div class="card-body">
@@ -245,7 +287,6 @@
       </div>
       <div class="card-arrow">›</div>
     </a>
-
     <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/varunbaid2003/varunbaid.github.io/main/Comps_US_Banks.xlsx" class="project-card" target="_blank">
       <div class="card-icon">XLSX</div>
       <div class="card-body">
@@ -259,7 +300,6 @@
       </div>
       <div class="card-arrow">›</div>
     </a>
-
     <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/varunbaid2003/varunbaid.github.io/main/Merger_Model_JPM_SCHW.xlsx" class="project-card" target="_blank">
       <div class="card-icon">XLSX</div>
       <div class="card-body">
@@ -273,9 +313,38 @@
       </div>
       <div class="card-arrow">›</div>
     </a>
-
   </div>
 
+  <!-- TOOLS -->
+  <div class="section-header">
+    <span class="section-title">Tools &amp; Projects</span>
+  </div>
+  <div class="tool-card-wrap">
+    <a href="https://varunbaid2003.github.io/pitchbook-gen" class="tool-card-inner" target="_blank">
+      <div class="card-icon blue" style="font-size:1.15rem">⚡</div>
+      <div class="tool-card-body">
+        <div class="tool-card-title">DealDeck Pro — M&amp;A Pitch Book Generator</div>
+        <div class="tool-card-desc">A browser-based tool that takes deal parameters and generates a formatted, client-ready M&amp;A pitch book as a downloadable PowerPoint in seconds — no formatting required.</div>
+        <div class="tool-problem">"Analysts spend 40–80 hours per mandate on pitch book formatting instead of analysis. This eliminates that entirely."</div>
+        <div class="tool-features">
+          <span class="tool-feature">15 slide types</span>
+          <span class="tool-feature">Chart type selector</span>
+          <span class="tool-feature">AI comps suggestion</span>
+          <span class="tool-feature">Custom slides via Claude API</span>
+          <span class="tool-feature">Instant .pptx download</span>
+        </div>
+        <div class="card-meta">
+          <span class="meta-tag blue">M&amp;A</span>
+          <span class="meta-tag">JavaScript</span>
+          <span class="meta-tag live">Live tool</span>
+          <span class="meta-date">2025</span>
+        </div>
+      </div>
+      <div class="card-arrow" style="align-self:center">›</div>
+    </a>
+  </div>
+
+  <!-- ABOUT -->
   <div class="section-header">
     <span class="section-title">About</span>
   </div>
@@ -287,8 +356,6 @@
   <footer>
     <div class="footer-left">Varun Baid</div>
   </footer>
-
 </div>
-
 </body>
 </html>
