@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Varun Baid — Finance Portfolio</title>
+<title>Varun Baid — Investment Banking Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #f8f7f4;
+    --bg: #f7f6f2;
     --surface: #ffffff;
-    --border: #e6e2db;
-    --border-light: #eeebe5;
-    --text: #1a1918;
-    --text-secondary: #6b6560;
-    --text-muted: #a09b94;
-    --accent: #2c4a3e;
-    --green-icon-bg: #edf5f0;
-    --green-icon-color: #276843;
-    --green-icon-border: #c8e2d4;
-    --blue-icon-bg: #eef2fb;
-    --blue-icon-color: #2a4a8a;
-    --blue-icon-border: #c4d2ef;
-    --red-icon-bg: #fbf0ee;
-    --red-icon-color: #9a3b28;
-    --red-icon-border: #eccdc5;
-    --tag-bg: #edeae4;
-    --tag-color: #6b6560;
-    --hover-bg: #f2efe9;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+    --border: #e3dfd6;
+    --border-light: #ede9e0;
+    --text: #131820;
+    --text-secondary: #545b66;
+    --text-muted: #949aa2;
+    --accent: #16233d;
+    --accent-hover: #22345a;
+    --gold: #9a7b3f;
+    --green-icon-bg: #eef1f6;
+    --green-icon-color: #1f3a63;
+    --green-icon-border: #cdd7e6;
+    --blue-icon-bg: #eef2f6;
+    --blue-icon-color: #2f5170;
+    --blue-icon-border: #cbd9e4;
+    --red-icon-bg: #f6eeec;
+    --red-icon-color: #7e3529;
+    --red-icon-border: #e5ccc5;
+    --tag-bg: #eeebe3;
+    --tag-color: #5e646d;
+    --hover-bg: #f1eee7;
+    --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+    --shadow-md: 0 4px 12px rgba(15,23,42,0.08), 0 2px 4px rgba(15,23,42,0.04);
   }
   body {
     font-family: 'Inter', sans-serif;
@@ -43,10 +45,11 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 3rem; height: 56px;
-    background: rgba(248,247,244,0.92);
+    background: rgba(247,246,242,0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
@@ -63,7 +66,7 @@
     text-decoration: none; transition: all 0.15s ease; letter-spacing: 0.01em;
   }
   .nav-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .nav-btn.primary:hover { background: #3a5e50; border-color: #3a5e50; }
+  .nav-btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
   .page { max-width: 680px; margin: 0 auto; padding: 6rem 2rem 5rem; }
   .hero {
     padding: 2.75rem 0 2.5rem;
@@ -85,7 +88,14 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.1rem; font-weight: 500;
     color: var(--text); line-height: 1.05;
-    margin-bottom: 0.55rem; letter-spacing: -0.01em;
+    margin-bottom: 0.7rem; letter-spacing: -0.01em;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-name::after {
+    content: ''; display: block;
+    width: 32px; height: 2px; background: var(--gold);
+    margin-top: 0.55rem; margin-bottom: -0.57rem;
   }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
   .hero-tag {
@@ -98,10 +108,14 @@
     font-size: 0.83rem; color: var(--text-muted);
     font-weight: 400; line-height: 1.65; max-width: 420px;
   }
-  .section-header { display: flex; align-items: center; margin-bottom: 1rem; }
+  .section-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+  .section-header::before {
+    content: ''; width: 18px; height: 2px;
+    background: var(--gold); flex-shrink: 0;
+  }
   .section-title {
     font-size: 0.62rem; font-weight: 600;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary);
   }
   .projects-list {
     display: flex; flex-direction: column;
@@ -207,7 +221,7 @@
     transition: background 0.14s ease;
   }
   .tool-card-inner:hover { background: var(--hover-bg); }
-  .tool-card-inner:hover .card-arrow { background: #2a4a8a; color: #fff; border-color: #2a4a8a; }
+  .tool-card-inner:hover .card-arrow { background: var(--accent); color: #fff; border-color: var(--accent); }
   .tool-card-body { flex: 1; min-width: 0; }
   .tool-card-title {
     font-size: 0.875rem; font-weight: 500; color: var(--text);
@@ -263,12 +277,13 @@
     <div class="hero-text">
       <div class="hero-name">Varun Baid</div>
       <div class="hero-tags">
-        <span class="hero-tag">Finance</span>
+        <span class="hero-tag">Investment Banking</span>
         <span class="hero-tag">Financial Modelling</span>
         <span class="hero-tag">Valuation</span>
         <span class="hero-tag">M&amp;A</span>
+        <span class="hero-tag">LBO</span>
       </div>
-      <div class="hero-desc">Finance graduate building financial models across valuation, leveraged buyouts, and M&amp;A. Focused on rigorous analysis and clean, practical Excel work.</div>
+      <div class="hero-desc">Finance graduate targeting investment banking — building sell-side quality models across DCF valuation, leveraged buyouts, comparable company analysis, and M&amp;A accretion / dilution. Rigorous analysis, clean Excel, deal-ready output.</div>
     </div>
   </div>
   <!-- FINANCIAL MODELS -->
